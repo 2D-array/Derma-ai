@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Medical-grade color palette */
+    --background: 0 0% 100%;
+    --foreground: 160 12% 18%;
+    
+    /* Sage green primary */
+    --primary: 155 22% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 155 30% 65%;
+    
+    /* Soft blue secondary */
+    --secondary: 200 45% 94%;
+    --secondary-foreground: 200 45% 20%;
+    
+    /* Warm neutrals */
+    --card: 0 0% 100%;
+    --card-foreground: 160 12% 18%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 12% 18%;
+    
+    --muted: 160 10% 96%;
+    --muted-foreground: 160 8% 45%;
+    
+    --accent: 155 22% 90%;
+    --accent-foreground: 155 22% 25%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 160 10% 90%;
+    --input: 160 10% 90%;
+    --ring: 155 22% 45%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(155 22% 45%), hsl(200 45% 55%));
+    --gradient-soft: linear-gradient(180deg, hsl(200 45% 98%), hsl(155 22% 96%));
+    --gradient-medical: linear-gradient(135deg, hsl(155 30% 65%), hsl(200 45% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(155 22% 45% / 0.9), hsl(200 45% 55% / 0.9));
+    
+    --shadow-soft: 0 4px 20px -2px hsl(155 22% 45% / 0.1);
+    --shadow-medical: 0 10px 40px -10px hsl(155 22% 45% / 0.15);
+    --shadow-glow: 0 0 30px hsl(155 30% 65% / 0.3);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --sidebar-background: 155 22% 98%;
+    --sidebar-foreground: 160 12% 18%;
+    --sidebar-primary: 155 22% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 155 22% 93%;
+    --sidebar-accent-foreground: 155 22% 25%;
+    --sidebar-border: 155 15% 90%;
+    --sidebar-ring: 155 22% 45%;
+  }
+
+  .dark {
+    --background: 160 12% 8%;
+    --foreground: 0 0% 95%;
+    
+    --primary: 155 22% 55%;
+    --primary-foreground: 160 12% 8%;
+    --primary-glow: 155 30% 75%;
+    
+    --secondary: 200 45% 15%;
+    --secondary-foreground: 200 45% 95%;
+    
+    --card: 160 12% 12%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 160 12% 12%;
+    --popover-foreground: 0 0% 95%;
+    
+    --muted: 160 10% 18%;
+    --muted-foreground: 160 8% 65%;
+    
+    --accent: 155 22% 20%;
+    --accent-foreground: 155 22% 90%;
+    
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 160 10% 18%;
+    --input: 160 10% 18%;
+    --ring: 155 22% 55%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(155 22% 55%), hsl(200 45% 65%));
+    --gradient-soft: linear-gradient(180deg, hsl(160 12% 12%), hsl(160 12% 8%));
+    --gradient-medical: linear-gradient(135deg, hsl(155 30% 35%), hsl(200 45% 45%));
+    
+    --sidebar-background: 160 12% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 155 22% 55%;
+    --sidebar-primary-foreground: 160 12% 8%;
+    --sidebar-accent: 155 22% 15%;
+    --sidebar-accent-foreground: 155 22% 90%;
+    --sidebar-border: 155 15% 18%;
+    --sidebar-ring: 155 22% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, hsl(var(--primary-glow) / 0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
